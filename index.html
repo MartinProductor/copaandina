@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Andina - Vinos Mendocinos Curados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6b2c91 0%, #8b4b9f 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #f4e6d7;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(107, 44, 145, 0.9), rgba(139, 75, 159, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23722F37" width="1200" height="800"/><path fill="%23A0522D" d="M0 400L50 420C100 440 200 480 300 500C400 520 500 520 600 500C700 480 800 440 900 420C1000 400 1100 400 1150 400L1200 400V800H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #d4a574, #f4e6d7);
+            color: #2c2c2c;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #f4e6d7, #d4a574);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: #f8f6f3;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #6b2c91;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #6b2c91, #8b4b9f);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #6b2c91;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #6b2c91;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(107, 44, 145, 0.3), rgba(139, 75, 159, 0.3));
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f6f3, #ede6d9);
+        }
+
+        .plans h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #6b2c91;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .plan-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card.featured {
+            border: 3px solid #6b2c91;
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #6b2c91;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #6b2c91;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #6b2c91;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #2c2c2c;
+            color: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #f4e6d7;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #f4e6d7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #6b2c91;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Copa Andina</div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#planes">Planes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Descubrí el Auténtico Vino Mendocino</h1>
+                <p>Cada mes, una selección curada de vinos boutique de Mendoza llega a tu puerta. Más que una caja, es una experiencia cultural que conecta con la historia y el territorio de cada etiqueta.</p>
+                <a href="#planes" class="cta-button">Comenzar Mi Suscripción</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="caracteristicas">
+        <div class="container">
+            <h2>¿Por qué elegir Copa Andina?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🍷</div>
+                    <h3>Curaduría Experta</h3>
+                    <p>Seleccionamos cuidadosamente cada vino de bodegas boutique mendocinas, garantizando calidad y autenticidad en cada botella.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📚</div>
+                    <h3>Experiencia Educativa</h3>
+                    <p>Cada caja incluye fichas de maridaje, historias de las bodegas y recomendaciones profesionales para enriquecer tu conocimiento.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Acceso Nacional</h3>
+                    <p>Llevamos los mejores vinos mendocinos a todo el país, conectando a los amantes del vino con etiquetas únicas e inaccesibles.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Productos Regionales</h3>
+                    <p>Algunas cajas incluyen aceitunas, frutos secos y dulces artesanales para una experiencia sensorial completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>Nuestra Misión</h2>
+                    <p>Ponemos en valor el vino mendocino y su identidad regional a través de una propuesta curada, profesional y accesible, que conecta a los consumidores con la historia, el territorio y la calidad de cada etiqueta seleccionada.</p>
+                    <p>Creemos que cada vino cuenta una historia única, y nuestra misión es ser el puente entre las bodegas boutique de Mendoza y los amantes del vino en todo el país.</p>
+                    <p>Más que una caja de vinos, Copa Andina es una invitación mensual a conocer el corazón de la vitivinicultura mendocina.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23722F37' width='400' height='300'/><rect fill='%23A0522D' x='50' y='50' width='300' height='200' rx='10'/><circle fill='%236b2c91' cx='200' cy='150' r='60'/><rect fill='%23f4e6d7' x='180' y='130' width='40' height='40'/></svg>" alt="Vinos Mendocinos">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans" id="planes">
+        <div class="container">
+            <h2>Elegí tu Plan Perfecto</h2>
+            <div class="plans-grid">
+                <div class="plan-card fade-in">
+                    <h3>Plan Esencial</h3>
+                    <div class="plan-price">$12.900<span>/mes</span></div>
+                    <ul class="plan-features">
+                        <li>2 vinos seleccionados</li>
+                        <li>Fichas de cata detalladas</li>
+                        <li>Historia de las bodegas</li>
+                        <li>Recomendaciones de maridaje</li>
+                        <li>Envío gratuito</li>
+                    </ul>
+                    <a href="#contacto" class="cta-button">Suscribirse</a>
+                </div>
+                <div class="plan-card featured fade-in">
+                    <h3>Plan Premium</h3>
+                    <div class="plan-price">$18.900<span>/mes</span></div>
+                    <ul class="plan-features">
+                        <li>3 vinos seleccionados</li>
+                        <li>Fichas de cata detalladas</li>
+                        <li>Historia de las bodegas</li>
+                        <li>Recomendaciones de maridaje</li>
+                        <li>Productos regionales incluidos</li>
+                        <li>Acceso a eventos exclusivos</li>
+                        <li>Envío gratuito</li>
+                    </ul>
+                    <a href="#contacto" class="cta-button">Suscribirse</a>
+                </div>
+                <div class="plan-card fade-in">
+                    <h3>Plan Coleccionista</h3>
+                    <div class="plan-price">$24.900<span>/mes</span></div>
+                    <ul class="plan-features">
+                        <li>4 vinos de autor seleccionados</li>
+                        <li>Fichas de cata detalladas</li>
+                        <li>Videoconferencia con enólogos</li>
+                        <li>Productos regionales premium</li>
+                        <li>Acceso a eventos exclusivos</li>
+                        <li>Botella de colección anual</li>
+                        <li>Envío gratuito</li>
+                    </ul>
+                    <a href="#contacto" class="cta-button">Suscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2>Comenzá tu Experiencia</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono">
+                </div>
+                <div class="form-group">
+                    <label for="plan">Plan de Interés</label>
+                    <select id="plan" name="plan" style="width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 1rem; background: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px);">
+                        <option value="">Selecciona un plan</option>
+                        <option value="esencial">Plan Esencial - $12.900/mes</option>
+                        <option value="premium">Plan Premium - $18.900/mes</option>
+                        <option value="coleccionista">Plan Coleccionista - $24.900/mes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje (opcional)</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos sobre tus preferencias de vino..."></textarea>
+                </div>
+                <button type="submit" class="cta-button">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Copa Andina</h3>
+                    <p>Conectando Argentina con los auténticos vinos mendocinos, una caja a la vez.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: info@copaandina.com</p>
+                    <p>Teléfono: +54 261 xxx-xxxx</p>
+                    <p>Mendoza, Argentina</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">🐦</a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2025 Copa Andina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(107, 44, 145, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #6b2c91 0%, #8b4b9f 100%)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('¡Gracias por tu interés! Te contactaremos pronto para comenzar tu suscripción.');
+                this.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+
+        // Add hover effects to plan cards
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (this.classList.contains('featured')) {
+                    this.style.transform = 'scale(1.05)';
+                } else {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add interactive wine glass cursor effect
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, #6b2c91, transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transition: all 0.1s ease;
+                    opacity: 0.7;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            const cursor2 = document.querySelector('.cursor');
+            cursor2.style.left = e.clientX + 'px';
+            cursor2.style.top = e.clientY + 'px';
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when hero is visible
+        const heroTitle = document.querySelector('.hero h1');
+        const originalTitle = heroTitle.textContent;
+        
+        setTimeout(() => {
+            typeWriter(heroTitle, originalTitle, 80);
+        }, 1500);
+
+        // Add wine bottle floating animation
+        function createFloatingWines() {
+            for (let i = 0; i < 3; i++) {
+                const wine = document.createElement('div');
+                wine.style.cssText = `
+                    position: fixed;
+                    width: 30px;
+                    height: 30px;
+                    background: 🍷;
+                    font-size: 30px;
+                    pointer-events: none;
+                    z-index: -1;
+                    animation: float ${5 + Math.random() * 3}s ease-in-out infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    opacity: 0.1;
+                `;
+                wine.textContent = '🍷';
+                document.body.appendChild(wine);
+            }
+        }
+
+        // Add floating wine animation keyframes
+        const floatingStyle = document.createElement('style');
+        floatingStyle.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                50% { transform: translateY(-20px) rotate(180deg); }
+            }
+        `;
+        document.head.appendChild(floatingStyle);
+
+        // Initialize floating wines
+        setTimeout(createFloatingWines, 2000);
+
+        // Add scroll progress indicator
+        function addScrollProgress() {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 4px;
+                background: linear-gradient(45deg, #d4a574, #f4e6d7);
+                z-index: 9999;
+                transition: width 0.3s ease;
+            `;
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        }
+
+        addScrollProgress();
+
+        // Add newsletter popup (delayed)
+        function showNewsletterPopup() {
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                z-index: 10000;
+                max-width: 400px;
+                text-align: center;
+            `;
+            
+            popup.innerHTML = `
+                <h3 style="color: #6b2c91; margin-bottom: 1rem;">¡No te pierdas nuestras ofertas!</h3>
+                <p style="margin-bottom: 1.5rem;">Suscribite a nuestro newsletter y recibí un 15% de descuento en tu primera caja.</p>
+                <input type="email" placeholder="tu@email.com" style="width: 100%; padding: 10px; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px;">
+                <div>
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #6b2c91; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin-right: 10px; cursor: pointer;">Suscribirse</button>
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #ccc; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Cerrar</button>
+                </div>
+            `;
+
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 9999;
+            `;
+            
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
+            });
+        }
+
+        // Show newsletter popup after 10 seconds
+        setTimeout(showNewsletterPopup, 10000);
+
+        // Add wine tasting notes tooltip
+        function addWineTastingTooltips() {
+            const wines = ['Malbec Premium', 'Cabernet Sauvignon', 'Merlot Reserva', 'Bonarda'];
+            const notes = [
+                'Notas de frutos rojos, especias y chocolate',
+                'Taninos firmes con notas de cassis y cedro',
+                'Suave y elegante con notas de ciruela',
+                'Intenso y frutal con toques de vainilla'
+            ];
+
+            wines.forEach((wine, index) => {
+                const tooltip = document.createElement('div');
+                tooltip.style.cssText = `
+                    position: absolute;
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 5px;
+                    font-size: 0.9rem;
+                    pointer-events: none;
+                    z-index: 1000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    top: ${100 + index * 80}px;
+                    left: ${200 + index * 50}px;
+                `;
+                tooltip.textContent = `${wine}: ${notes[index]}`;
+                document.body.appendChild(tooltip);
+
+                setTimeout(() => {
+                    tooltip.style.opacity = '1';
+                    setTimeout(() => {
+                        tooltip.style.opacity = '0';
+                        setTimeout(() => tooltip.remove(), 300);
+                    }, 3000);
+                }, index * 1000 + 5000);
+            });
+        }
+
+        addWineTastingTooltips();
+
+        // Add interactive elements counter
+        let interactionCount = 0;
+        const interactionElements = document.querySelectorAll('.cta-button, .feature-card, .plan-card');
+        
+        interactionElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                interactionCount++;
+                if (interactionCount === 5) {
+                    // Show special offer after 5 interactions
+                    const offer = document.createElement('div');
+                    offer.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background: #6b2c91;
+                        color: white;
+                        padding: 1rem;
+                        border-radius: 10px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                        z-index: 1000;
+                        animation: slideIn 0.5s ease;
+                    `;
+                    offer.innerHTML = `
+                        <h4>¡Oferta Especial! 🎉</h4>
+                        <p>Primera caja con 20% de descuento</p>
+                        <button onclick="this.parentElement.remove()" style="background: #f4e6d7; color: #2c2c2c; border: none; padding: 5px 10px; border-radius: 5px; margin-top: 10px; cursor: pointer;">¡Quiero el descuento!</button>
+                    `;
+                    document.body.appendChild(offer);
+
+                    const slideInStyle = document.createElement('style');
+                    slideInStyle.textContent = `
+                        @keyframes slideIn {
+                            from { transform: translateX(100%); }
+                            to { transform: translateX(0); }
+                        }
+                    `;
+                    document.head.appendChild(slideInStyle);
+
+                    setTimeout(() => offer.remove(), 8000);
+                }
+            });
+        });
+
+        // Add seasonal wine recommendations
+        function getSeasonalRecommendation() {
+            const month = new Date().getMonth();
+            const seasons = {
+                'spring': { months: [8, 9, 10], wines: 'Rosé y Sauvignon Blanc' },
+                'summer': { months: [11, 0, 1], wines: 'Torrontés y Pinot Grigio' },
+                'autumn': { months: [2, 3, 4], wines: 'Malbec y Cabernet Sauvignon' },
+                'winter': { months: [5, 6, 7], wines: 'Bonarda y Merlot' }
+            };
+
+            for (const season in seasons) {
+                if (seasons[season].months.includes(month)) {
+                    return seasons[season].wines;
+                }
+            }
+        }
+
+        // Display seasonal recommendation
+        const seasonalRec = getSeasonalRecommendation();
+        if (seasonalRec) {
+            const recommendation = document.createElement('div');
+            recommendation.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(107, 44, 145, 0.9);
+                color: white;
+                padding: 1rem;
+                border-radius: 10px;
+                max-width: 200px;
+                z-index: 1000;
+                animation: fadeIn 1s ease;
+            `;
+            recommendation.innerHTML = `
+                <h4>🍷 Recomendación de Temporada</h4>
+                <p>${seasonalRec}</p>
+                <small>Perfectos para esta época del año</small>
+            `;
+            document.body.appendChild(recommendation);
+
+            setTimeout(() => recommendation.remove(), 6000);
+        }
+
+        // Add dynamic background particles
+        function createParticles() {
+            const particleCount = 50;
+            const particles = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 3px;
+                    height: 3px;
+                    background: rgba(107, 44, 145, 0.3);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: -1;
+                `;
+                document.body.appendChild(particle);
+                particles.push({
+                    element: particle,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    speedX: (Math.random() - 0.5) * 2,
+                    speedY: (Math.random() - 0.5) * 2
+                });
+            }
+
+            function animateParticles() {
+                particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+
+                    if (particle.x < 0 || particle.x > window.innerWidth) particle.speedX *= -1;
+                    if (particle.y < 0 || particle.y > window.innerHeight) particle.speedY *= -1;
+
+                    particle.element.style.left = particle.x + 'px';
+                    particle.element.style.top = particle.y + 'px';
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            animateParticles();
+        }
+
+        // Initialize particles after page load
+        setTimeout(createParticles, 3000);
+
+        // Add wine glass animation on scroll
+        let wineGlassCreated = false;
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500 && !wineGlassCreated) {
+                wineGlassCreated = true;
+                const wineGlass = document.createElement('div');
+                wineGlass.style.cssText = `
+                    position: fixed;
+                    bottom: -100px;
+                    right: 50px;
+                    font-size: 60px;
+                    z-index: 1000;
+                    animation: wineGlassRise 3s ease-out forwards;
+                `;
+                wineGlass.textContent = '🍷';
+                document.body.appendChild(wineGlass);
+
+                const wineGlassStyle = document.createElement('style');
+                wineGlassStyle.textContent = `
+                    @keyframes wineGlassRise {
+                        0% { bottom: -100px; transform: rotate(0deg); }
+                        100% { bottom: 100px; transform: rotate(360deg); }
+                    }
+                `;
+                document.head.appendChild(wineGlassStyle);
+
+                setTimeout(() => wineGlass.remove(), 4000);
+            }
+        });
+
+        console.log('Copa Andina - Landing page loaded successfully! 🍷');
+    </script>
+</body>
+</html>
